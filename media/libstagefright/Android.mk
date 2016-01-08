@@ -119,6 +119,10 @@ LOCAL_SHARED_LIBRARIES := \
         libz \
         libpowermanager \
 
+ifeq ($(BOARD_USE_64BITMEDIA),true)
+LOCAL_CFLAGS += -DUSE_64BITMEDIA
+endif
+
 ifeq ($(BOARD_CANT_REALLOCATE_OMX_BUFFERS),true)
 LOCAL_CFLAGS += -DBOARD_CANT_REALLOCATE_OMX_BUFFERS
 endif

@@ -83,7 +83,9 @@ LOCAL_CLANG := true
 
 LOCAL_MODULE:= libmediaplayerservice
 
-#LOCAL_32_BIT_ONLY := true
+ifneq ($(BOARD_USE_64BITMEDIA),true)
+LOCAL_32_BIT_ONLY := true
+ifneq ($(BOARD_USE_64BITMEDIA),true)
 
 include $(BUILD_SHARED_LIBRARY)
 
