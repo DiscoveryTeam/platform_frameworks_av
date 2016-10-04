@@ -222,7 +222,7 @@ class CameraMetadata: public Parcelable {
 
   private:
     camera_metadata_t *mBuffer;
-    volatile char      mReserved[3];
+    volatile bool      mReserved;
     mutable bool       mLocked;
 
     /**
