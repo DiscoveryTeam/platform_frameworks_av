@@ -1554,15 +1554,17 @@ sp<AudioFlinger::EffectHandle> AudioFlinger::ThreadBase::createEffect_l(
 
 Exit:
     if (lStatus != NO_ERROR && lStatus != ALREADY_EXISTS) {
-        Mutex::Autolock _l(mLock);
-        if (effectCreated) {
-            chain->removeEffect_l(effect);
-        }
-        if (effectRegistered) {
-            AudioSystem::unregisterEffect(effect->id());
-        }
-        if (chainCreated) {
-            removeEffectChain_l(chain);
+        {
+            Mutex::Autolock _l(mLock);
+            if (effectCreated) {
+                chain->removeEffect_l(effect);
+            }
+            if (effectRegistered) {
+                AudioSystem::unregisterEffect(effect->id());
+            }
+            if (chainCreated) {
+                removeEffectChain_l(chain);
+            }
         }
         handle.clear();
     }
