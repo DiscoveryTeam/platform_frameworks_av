@@ -79,14 +79,6 @@ cc_library_shared {
         "-Wno-documentation",
     ],
 
-    product_variables: {
-        qualcomm: {
-            targetUsesQCOMLegacyBsp: {
-                cflags: [ "-DQCOM_BSP_LEGACY", ],
-            },
-        },
-    },
-
     sanitize: {
         misc_undefined: [
             "signed-integer-overflow",
@@ -98,7 +90,7 @@ cc_library_shared {
         },
     },
 
-     product_variables: {
+    product_variables: {
         qcom_bsp_legacy: {
             cflags: ["-DQCOM_BSP_LEGACY"],
         },
